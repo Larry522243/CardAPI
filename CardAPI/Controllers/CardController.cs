@@ -9,15 +9,18 @@ namespace CardAPI.Controllers
     public class CardController : ControllerBase
     {
         private readonly CardRepository _cardRepository;
+
         public CardController()
         {
             this._cardRepository = new CardRepository();
         }
+
         [HttpGet]
         public IEnumerable<CardDto> GetList()
         {
             return this._cardRepository.GetList();
         }
+
         [HttpGet]
         [Route("{id}")]
         public CardDto? Get([FromRoute] int id)
@@ -30,6 +33,7 @@ namespace CardAPI.Controllers
             }
             return result;
         }
+
         [HttpPost]
         public IActionResult Insert([FromBody] CardDto parameter)
         {
@@ -40,6 +44,7 @@ namespace CardAPI.Controllers
             }
             return StatusCode(500);
         }
+
         [HttpPut]
         [Route("{id}")]
         public IActionResult Update(
@@ -58,6 +63,7 @@ namespace CardAPI.Controllers
             }
             return StatusCode(500);
         }
+
         [HttpDelete]
         [Route("{id}")]
         public IActionResult Delete([FromRoute] int id)
@@ -65,6 +71,7 @@ namespace CardAPI.Controllers
             this._cardRepository.Delete(id);
             return Ok();
         }
+
         [HttpPatch]
         [Route("{id}")]
         public IActionResult PartialUpdate(

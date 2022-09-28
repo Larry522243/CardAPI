@@ -7,6 +7,7 @@ namespace CardAPI.Repository
     public class CardRepository
     {
         private readonly string _connectString = DBUtil.ConnectionString();
+
         public IEnumerable<CardDto> GetList()
         {
             using var conn = new SqlConnection(_connectString);
@@ -22,6 +23,7 @@ namespace CardAPI.Repository
             });
             return result;
         }
+
         public CardDto? Get(int id)
         {
             var sql =
@@ -49,6 +51,7 @@ namespace CardAPI.Repository
                 return null;
             }
         }
+
         public int Create(CardDto parameter)
         {
             var sql =
@@ -73,6 +76,7 @@ namespace CardAPI.Repository
             var result = conn.Execute(sql, parameter);
             return result;
         }
+
         public bool Update(int id, CardDto parameter)
         {
             var sql =
@@ -92,6 +96,7 @@ namespace CardAPI.Repository
             var result = conn.Execute(sql, parameters);
             return result > 0;
         }
+
         public void Delete(int id)
         {
             var sql =
@@ -104,6 +109,7 @@ namespace CardAPI.Repository
             using var conn = new SqlConnection(_connectString);
             var result = conn.Execute(sql, parameters);
         }
+
         public bool PartialUpdate(int id, CardPartialDto parameter)
         {
             var sql =

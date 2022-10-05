@@ -2,7 +2,7 @@
 {
     /// <summary>
     /// 卡片
-    /// /// </summary>
+    /// </summary>
     public class Card
     {
         /// <summary>
